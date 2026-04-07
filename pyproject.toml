@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ticket-env"
+version = "0.1.0"
+description = "Support Triage Benchmark Environment for OpenEnv"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "openenv-core>=0.1.0",
+    "pydantic>=2.0.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["server*", "models*"]
