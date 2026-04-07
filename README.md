@@ -1,3 +1,12 @@
+---
+title: Support Triage Env
+emoji: 🛠️
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+app_port: 8000
+---
+
 # Support Triage Environment (support-triage-v1)
 
 This repository contains a Customer Support Ticket simulation implementing the exact **OpenEnv** specifications demanded by the Meta PyTorch Hackathon.
