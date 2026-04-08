@@ -35,12 +35,12 @@ class SupportEnvClient(EnvClient[SupportAction, SupportObservation, SupportState
             clarification_reply=obs_data.get("clarification_reply"),
             error=obs_data.get("error"),
             done=payload.get("done", False),
-            reward=payload.get("reward", 0.01),
+            reward=max(0.01, min(0.99, float(payload.get("reward", 0.01)))),
             metadata=obs_data.get("metadata", {}),
         )
         return StepResult(
             observation=observation,
-            reward=payload.get("reward", 0.01),
+            reward=max(0.01, min(0.99, float(payload.get("reward", 0.01)))),
             done=payload.get("done", False),
         )
 

@@ -161,9 +161,10 @@ class SupportEnvironment(Environment):
             obs.done = True
             obs.error = "Exceeded maximum iterations (10)."
 
-        # Apply rubric using the built-in Environment rubric system
+        # Apply rubric directly instead of via _apply_rubric to avoid OpenEnv overwriting
         # self.rubric handles positive process rew for ask_clarification/query_db and outcome rew
-        obs.reward = self._apply_rubric(action, obs)
+        obs.reward = float(self.rubric(action, obs))
+        obs.reward = max(0.01, min(0.99, obs.reward))
 
         self._last_obs = obs
         return obs

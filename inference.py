@@ -114,6 +114,7 @@ def run_episode(env, episode_id):
             # Step the environment
             next_obs = env.step(action)
             current_reward = getattr(next_obs, "reward", 0.01)
+            current_reward = max(0.01, min(0.99, float(current_reward)))
             rewards_history.append(f"{current_reward:.2f}")
             
             err = getattr(next_obs, 'error', None)
