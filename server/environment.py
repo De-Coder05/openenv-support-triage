@@ -13,7 +13,7 @@ except ImportError:
         @property
         def state(self): raise NotImplementedError
         def get_metadata(self): return None
-        def _apply_rubric(self, action, observation): return 0.0
+        def _apply_rubric(self, action, observation): return 0.01
 
 from models import SupportAction, SupportObservation, SupportState
 from .rubrics import SupportRubric
@@ -102,7 +102,7 @@ class SupportEnvironment(Environment):
             metadata={"expected_route": task["expected_route"]}
         )
         # Give initial reward = 0
-        obs.reward = 0.0
+        obs.reward = 0.01
         self._last_obs = obs
         return obs
 
