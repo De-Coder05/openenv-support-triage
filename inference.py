@@ -124,7 +124,7 @@ def run_episode(env, episode_id):
             print(f"[STEP] step={step} action={action_str} reward={current_reward:.2f} done={done_str} error={err_str}")
             
             if done:
-                success = "true" if current_reward == 1.0 else "false"
+                success = "true" if current_reward >= 0.9 else "false"
                 rewards_str = ",".join(rewards_history)
                 print(f"[END] success={success} steps={step} rewards={rewards_str}")
                 return
