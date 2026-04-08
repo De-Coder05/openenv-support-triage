@@ -80,8 +80,8 @@ def run_episode(env, episode_id):
             )
         except Exception as e:
             err_msg = str(e).replace("'", "").replace("\n", " ")
-            print(f"[STEP] step={step} action=none reward=0.00 done=true error='API Error: {err_msg}'")
-            rewards_str = ",".join(rewards_history + ["0.00"])
+            print(f"[STEP] step={step} action=none reward=0.01 done=true error='API Error: {err_msg}'")
+            rewards_str = ",".join(rewards_history + ["0.01"])
             print(f"[END] success=false steps={step} rewards={rewards_str}")
             return
         
@@ -94,8 +94,8 @@ def run_episode(env, episode_id):
                 action_args = json.loads(tool_call.function.arguments)
             except Exception as e:
                 err_msg = str(e).replace("'", "").replace("\n", " ")
-                print(f"[STEP] step={step} action=none reward=0.00 done=true error='JSON Parse Error: {err_msg}'")
-                rewards_str = ",".join(rewards_history + ["0.00"])
+                print(f"[STEP] step={step} action=none reward=0.01 done=true error='JSON Parse Error: {err_msg}'")
+                rewards_str = ",".join(rewards_history + ["0.01"])
                 print(f"[END] success=false steps={step} rewards={rewards_str}")
                 return
             
@@ -146,8 +146,8 @@ def run_episode(env, episode_id):
             
         else:
             # Model didn't use a tool, force a stop or tell it to act
-            print(f"[STEP] step={step} action=none reward=0.00 done=true error='Model failed to select tool'")
-            rewards_str = ",".join(rewards_history + ["0.00"])
+            print(f"[STEP] step={step} action=none reward=0.01 done=true error='Model failed to select tool'")
+            rewards_str = ",".join(rewards_history + ["0.01"])
             print(f"[END] success=false steps={step} rewards={rewards_str}")
             return
             
