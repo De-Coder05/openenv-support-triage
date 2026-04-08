@@ -24,6 +24,10 @@ class SupportRubric(Rubric):
         self.failure_penalty = failure_penalty
         self.process_reward = process_reward
 
+    def __call__(self, action: Any, observation: Any) -> float:
+        score = self.forward(action, observation)
+        return max(0.01, min(0.99, float(score)))
+
     def forward(self, action: Any, observation: Any) -> float:
         """
         Calculates the reward for the current action.
